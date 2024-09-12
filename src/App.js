@@ -1,8 +1,18 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from './components/layout';
+import Home from "./pages/Home";
+import Detail from "./pages/Detail";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Furniture Palace</h1>
-    </div>
+    <BrowserRouter>
+    <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/:slug" element={<Detail />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
