@@ -10,8 +10,14 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       const { productId, quantity } = action.payload;
-      state.items.push({productId, quantity});
+      const indexProductId = (state.items).findIndex(item => item.productId === productId);
+      if (indexProductId >= 0) {
+        state.items[indexProductId].quantity += quantity;
+      } else {
+        state.items.push({productId, quantity});
+      }
     }
   },
 });
-export default cartSlice;
+export const { addToCart } = cartSlice.actions;
+export default cartSlice.reducer;
