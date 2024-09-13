@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import iconCart from "../assets/images/iconCart.png";
+import { useSelector } from "react-redux";
 
 const ProductCart = (props) => {
+  const carts = useSelector((store) => store.cart);
+  console.log(carts);
   const { id, name, price, image, slug } = props.data;
 
   return (
